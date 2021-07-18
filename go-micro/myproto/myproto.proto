@@ -1,0 +1,26 @@
+syntax = "proto3";
+//编译命令： protoc --proto_path=. --go_out=plugins=grpc:./ *.proto
+package myproto;
+
+option go_package =".";
+//定义服务
+service Helloserver {
+    rpc Sayhello(HelloReq) returns (HelloRes);
+    rpc Sayname(NameReq) returns (NameRes);
+}
+
+message HelloReq{
+    string name = 1;
+}
+
+message HelloRes{
+    string msg = 1;
+}
+
+message NameReq{
+    string name = 1;
+}
+
+message NameRes{
+    string msg = 1;
+}
